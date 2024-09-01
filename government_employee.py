@@ -289,11 +289,18 @@ for x in range(row_count-1):
     v43 = doc.tables[2].cell(9,4).paragraphs[0].text = str(l2_sum)
     v44 = doc.tables[2].cell(9,5).paragraphs[0].text = str(l2_sum_e)
     
+    # for xr in range(2,10):
+    #     for y in range(2,4):
+    #         newdata2.append(doc.tables[2].cell(x,y).paragraphs[0])
+    #     for y2 in range(4,6):
+    #         newdata2.append(doc.tables[2].cell(x,y2).paragraphs[0])
+
     for xr in range(2,10):
-        for y in range(2,4):
-            newdata2.append(doc.tables[2].cell(x,y).paragraphs[0])
-        for y2 in range(4,6):
-            newdata2.append(doc.tables[2].cell(x,y2).paragraphs[0])
+        for y in range(2,6):
+            try:
+                newdata2.append(doc.tables[2].cell(xr,y).paragraphs[0])
+            except IndexError:
+                print(f"ไม่พบเซลล์ที่ตำแหน่ง ({xr},{y}) ในตารางที่ 2")
     newdata.append(doc.tables[0].cell(0,0).paragraphs[1])
     newdata.append(doc.tables[0].cell(0,1).paragraphs[1])
     newdata.append(doc.tables[0].cell(1,0).paragraphs[1])
